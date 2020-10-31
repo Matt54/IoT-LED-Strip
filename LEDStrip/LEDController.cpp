@@ -339,8 +339,8 @@ void LEDController::SetAudioReactive(int val){
 
 
 void LEDController::TurnOff(){
-        ClearStrip();
         isOn = false;
+        ClearStrip();
 }
 
 void LEDController::TurnOn(){
@@ -350,4 +350,12 @@ void LEDController::TurnOn(){
 void LEDController::TogglePower(){
         if(isOn) TurnOff();
         else TurnOn();
+}
+
+void LEDController::SetPower(int val){
+        if(val > 0) TurnOn();
+        else {
+          TurnOff();
+          ClearStrip();
+        }
 }

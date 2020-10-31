@@ -9,6 +9,7 @@
 			programNumber = '{{ data[2] }}'
 			brightness = '{{ data[3] }}'
 			isAudioReactive = '{{ data[4] }}'
+			isOn = '{{ data[5] }}'
 	 </script>
 
 	<link href="../static/css/style.css" rel="stylesheet">
@@ -59,6 +60,9 @@
 				<div>
 					<input id="audioReactive" type="checkbox" name="arCheck" value="isAudioReactive">
 					<label for="audioReactive">Audio Reactive?</label>
+				<div>
+					<input id="powerOn" type="checkbox" name="powerCheck" value="isOn">
+					<label for="powerOn">Power On?</label>
 				</div>
 				<input type="color" id="works1" value="#fdffff" onchange="alert(this.value);" />
 				<input class="btn" type="submit" value="Submit">

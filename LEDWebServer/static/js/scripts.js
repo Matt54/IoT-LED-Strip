@@ -13,4 +13,11 @@ function setupPage(){
     document.getElementById("audioReactive").checked = false;
   }
 
+  if(parseInt(isOn) > 0){
+    document.getElementById("powerOn").checked = true;
+  }
+  else{
+    document.getElementById("powerOn").checked = false;
+  }
+
 }

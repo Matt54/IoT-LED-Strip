@@ -97,6 +97,7 @@ void AdjustSettings(int r,int val)
                 Serial.println("");
                 break;
 
+        // Tells Arduino what to return
         case 5:
                 //sendData();
                 Serial.println("In Register 5 :");
@@ -104,6 +105,13 @@ void AdjustSettings(int r,int val)
                 Serial.println("");
                 dataToWrite = val;
                 //Wire.write(12);
+                break;
+
+        case 6:
+                controller->SetPower(val);
+                Serial.println("In Register 6 :");
+                Serial.println(val);
+                Serial.println("");
                 break;
       }
 }
@@ -129,6 +137,14 @@ void sendData()
             break;
         case 4:
             if(controller->isAudioReactive){
+              Wire.write(1);
+            }
+            else{
+              Wire.write(0);
+            }
+            break;
+        case 5:
+            if(controller->isOn){
               Wire.write(1);
             }
             else{

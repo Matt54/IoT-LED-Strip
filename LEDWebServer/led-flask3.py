@@ -27,6 +27,12 @@ def formexample():
         else:
             audioReactive = 0
 
+        isOn = 2
+        if request.form.get('powerCheck'):
+            isOn = 1
+        else:
+            isOn = 0
+
         if(timing != ""):
             write(0,int(timing))
         if(mod != ""):
@@ -37,6 +43,8 @@ def formexample():
             write(3,int(brightness))
         if(audioReactive != 2):
             write(4,int(audioReactive))
+        if(isOn != 2):
+            write(6,int(isOn))
 
     data = get_data()
     return render_template('main.html', data=data)
@@ -60,6 +68,8 @@ def get_data():
     brightness = str(read_data())
     write(5,4)
     audioReactive = str(read_data())
+    write(5,5)
+    isOn = str(read_data())
 
     #message = get_data()
 
@@ -69,6 +79,7 @@ def get_data():
     data.append(program_number)
     data.append(brightness)
     data.append(audioReactive)
+    data.append(isOn)
     return data
 
 def read_data():

@@ -87,6 +87,7 @@ public:
  void TurnOff();
  void TurnOn();
  void TogglePower();
+ void SetPower(int val);
  void IncrementProgramNumber();
 };
 

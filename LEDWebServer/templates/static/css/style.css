@@ -1,0 +1,71 @@
+body {
+  /*margin: 50px;*/
+}
+
+.tb {
+  width: 50px;
+  text-align: center;
+}
+
+.btn{
+  margin: 10px;
+  padding: 5px;
+}
+
+
+.inner_column_left {
+  float: left;
+  width: 50%;
+  text-align: right;
+  padding: 10px;
+}
+
+.inner_column_right {
+  float: left;
+  width: 50%;
+  text-align: left;
+  padding: 10px;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.right {
+  color: red;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left, .right {
+  width: 10%;
+}
+
+.middle {
+  width: 80%;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

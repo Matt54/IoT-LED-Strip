@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	 <script type="text/javascript">
+	    timing = '{{ data[0] }}'
+			mod = '{{ data[1] }}'
+			programNumber = '{{ data[2] }}'
+			brightness = '{{ data[3] }}'
+			isAudioReactive = '{{ data[4] }}'
+	 </script>
+
+	<link href="../static/css/style.css" rel="stylesheet">
+	<!--<link href="static/css/style.css" rel="stylesheet"> USE THIS FOR FLASK-->
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body onload="setupPage()">
+	<h1 class="title">
+		Matt's Smart LED Strip
+	</h1>
+	<div class="row">
+		<div class="column left"></div>
+		<div class="column middle">
+			<form method="POST">
+				<div class="inner_row">
+					<div class="inner_column_left">
+						Timing:
+					</div>
+					<div class="inner_column_right">
+						<input id="timing" class="tb" type="number" name="timing">
+					</div>
+				</div>
+				<div class="inner_row">
+					<div class="inner_column_left">
+						Mod:
+					</div>
+					<div class="inner_column_right">
+						<input id="mod" class="tb" type="number" name="mod">
+					</div>
+				</div>
+				<div class="inner_row">
+					<div class="inner_column_left">
+						Program Number:
+					</div>
+					<div class="inner_column_right">
+						<input id="programNumber" class="tb" type="number" name="program_number">
+					</div>
+				</div>
+				<div class="inner_row">
+					<div class="inner_column_left">
+						Brightness:
+					</div>
+					<div class="inner_column_right">
+						<input id="brightness" class="tb" type="number" name="brightness">
+					</div>
+				</div>
+				<div>
+					<input id="audioReactive" type="checkbox" name="arCheck" value="isAudioReactive">
+					<label for="audioReactive">Audio Reactive?</label>
+				</div>
+				<input type="color" id="works1" value="#fdffff" onchange="alert(this.value);" />
+				<input class="btn" type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="column right"></div>
+	</div>
+
+	<script src="../static/js/scripts.js"></script>
+	<script src="{{ url_for('static',filename='js/scripts.js') }}"></script>
+
+
+</body>
+
+</html>

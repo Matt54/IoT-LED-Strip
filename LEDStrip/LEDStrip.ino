@@ -113,6 +113,12 @@ void AdjustSettings(int r,int val)
                 Serial.println(val);
                 Serial.println("");
                 break;
+        case 7:
+                togglePower();
+                Serial.println("In Register 7 :");
+                Serial.println(val);
+                Serial.println("");
+                break;
       }
 }
 
@@ -172,13 +178,17 @@ void loop() {
         if(controller->isOn) {
                 if(controller->isAudioReactive) controller->AudioLevelCheck();
                 controller->CheckTime();
+                checkSoundLevel();
+        }
+        else{
+          controller->TurnOff();
         }
         powerButton->checkState();
         programButton->checkState();
         //checkPowerPin();
         //Serial.println(controller->thresholdCount);
         //Serial.println(controller->isAudioReactive);
-        checkSoundLevel();
+
 }
 
 void togglePower(){

@@ -16,7 +16,7 @@ public:
   */
  unsigned long timeNow;
  unsigned long timePast;
- int timerInterval = 50;
+ uint8_t timerInterval = 50;
 
  int counter = 0; // needs to be an int because it can go up to NUM_LEDS
 

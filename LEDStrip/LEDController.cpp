@@ -356,6 +356,6 @@ void LEDController::SetPower(int val){
         if(val > 0) TurnOn();
         else {
           TurnOff();
-          ClearStrip();
+          ClearStrip(); // requires multiple calls to flush all LEDs
         }
 }

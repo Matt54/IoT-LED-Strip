@@ -1,6 +1,6 @@
 #LED-control
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import smbus
 import time
 
@@ -14,7 +14,7 @@ def main_page():
     data = get_data()
     return render_template('main.html', data=data)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/SettingChange', methods=['GET', 'POST'])
 def formexample():
     if request.method == 'POST':
         timing = request.form.get('timing')
@@ -46,11 +46,19 @@ def formexample():
         if(isOn != 2):
             write(6,int(isOn))
 
-    data = get_data()
-    return render_template('main.html', data=data)
+    return redirect(url_for('main_page'))
+    #data = get_data()
+    #return render_template('main.html', data=data)
+
+
+@app.route('/TogglePower', methods=['GET', 'POST'])
+def togglePower():
+    write(7,int(1))
+    return redirect(url_for('main_page'))
 
 def write(register,value):
     bus.write_byte_data(address,register,value)
+    wait()
     return -1
 
 def read(register):
@@ -84,6 +92,11 @@ def get_data():
 
 def read_data():
     return bus.read_byte(address);
+
+def wait(timeToWait=0.15):
+    start = time.time()
+    while time.time() - start < timeToWait:
+        pass
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=2525,debug=True) #run app in debug mode on port 2525

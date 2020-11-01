@@ -3,18 +3,18 @@
 
 <head>
 
-	 <script type="text/javascript">
-	    timing = '{{ data[0] }}'
-			mod = '{{ data[1] }}'
-			programNumber = '{{ data[2] }}'
-			brightness = '{{ data[3] }}'
-			isAudioReactive = '{{ data[4] }}'
-			isOn = '{{ data[5] }}'
-	 </script>
+	<script type="text/javascript">
+		timing = '{{ data[0] }}'
+		mod = '{{ data[1] }}'
+		programNumber = '{{ data[2] }}'
+		brightness = '{{ data[3] }}'
+		isAudioReactive = '{{ data[4] }}'
+		isOn = '{{ data[5] }}'
+	</script>
 
 	<link href="../static/css/style.css" rel="stylesheet">
 	<!--<link href="static/css/style.css" rel="stylesheet"> USE THIS FOR FLASK-->
-	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 </head>
 
 <body onload="setupPage()">
@@ -24,7 +24,7 @@
 	<div class="row">
 		<div class="column left"></div>
 		<div class="column middle">
-			<form method="POST">
+			<form action='/SettingChange' method="POST">
 				<div class="inner_row">
 					<div class="inner_column_left">
 						Timing:
@@ -60,12 +60,15 @@
 				<div>
 					<input id="audioReactive" type="checkbox" name="arCheck" value="isAudioReactive">
 					<label for="audioReactive">Audio Reactive?</label>
-				<div>
-					<input id="powerOn" type="checkbox" name="powerCheck" value="isOn">
-					<label for="powerOn">Power On?</label>
-				</div>
-				<input type="color" id="works1" value="#fdffff" onchange="alert(this.value);" />
-				<input class="btn" type="submit" value="Submit">
+					<div>
+						<input id="powerOn" type="checkbox" name="powerCheck" value="isOn">
+						<label for="powerOn">Power On?</label>
+					</div>
+					<input type="color" id="works1" value="#fdffff" onchange="alert(this.value);" />
+					<input class="btn" type="submit" value="Submit">
+			</form>
+			<form action="/TogglePower" method="POST">
+				<button id="togglePower" type="submit">Toggle Power</button>
 			</form>
 		</div>
 		<div class="column right"></div>
